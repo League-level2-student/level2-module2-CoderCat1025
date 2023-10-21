@@ -9,6 +9,7 @@ package _04_animals_inheritance;
  */
 public class AnimalRunner {
 	public static void main(String[] args) {
+		
 		Dog d = new Dog("Lucy", "brown", true);
 		d.printName();
 		d.play();
