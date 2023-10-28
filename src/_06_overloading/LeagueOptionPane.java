@@ -1,5 +1,6 @@
 package _06_overloading;
 
+import java.awt.Image;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -16,10 +17,6 @@ import javax.swing.JPanel;
  * GOAL: Create your own custom pop-up messages
  */
 public class LeagueOptionPane {
-//	static JFrame frame = new JFrame();
-//	static JPanel panel = new JPanel();
-//	static JLabel label = new JLabel();
-
 	public static void showMessageDialog(String message) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
@@ -31,6 +28,7 @@ public class LeagueOptionPane {
 		frame.setVisible(true);
 		frame.setTitle("Message");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		label.setIcon(loadImage("league.png"));
 		frame.add(panel);
 		panel.add(label);
 		label.setText(message);
@@ -54,6 +52,7 @@ public class LeagueOptionPane {
 		frame.setVisible(true);
 		frame.setTitle(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		label.setIcon(loadImage("league.png"));
 		frame.add(panel);
 		panel.add(label);
 		label.setText(message);
@@ -66,6 +65,22 @@ public class LeagueOptionPane {
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
+	public static void showMessageDialog(String message, String title, String fileName) {
+		 JFrame frame = new JFrame();
+		 JPanel panel = new JPanel();
+		 JLabel label = new JLabel();
+		 
+		frame.setVisible(true);
+		frame.setTitle(title);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		label.setIcon(loadImage(fileName));
+		frame.add(panel);
+		panel.add(label);
+		label.setText(message);
+		frame.pack();
+		
+		frame.setLocationRelativeTo(null);
+	}
 	
 	// 7. Call this method in the Runner class
 	
