@@ -70,11 +70,14 @@ public class LeagueSnake extends PApplet {
 		// Draw the head of the snake followed by its tail
 		fill(0, 255, 0);
 		rect(head.getX(), head.getY(), 10, 10);
+		manageTail();
 	}
 
 	void drawTail() {
 		// Draw each segment of the tail
-
+for (int i = 0; i < tail.size(); i++) {
+	rect(tail.get(i).getX(), tail.get(i).getY(), 10, 10);
+}
 	}
 
 	/*
@@ -98,6 +101,7 @@ public class LeagueSnake extends PApplet {
 		// If the snake crosses its own tail, shrink the tail back to one segment
 for(int i = 0; i < tail.size(); i++) {
 	if (head.getX() == tail.get(i).getX() && head.getY() == tail.get(i).getY()) {
+		//get rid of everything that ends the game (like tail.clear()) to play a game of immortal snake
 		foodEaten = 1;
 		tail.clear();
 	}
@@ -167,13 +171,13 @@ for(int i = 0; i < tail.size(); i++) {
 
 	void checkBoundaries() {
 		// If the snake leaves the frame, make it reappear on the other side
-		if (head.getX() > 500) {
+		if (head.getX() > 490) {
 			head.setX(0);
 		}
 		if (head.getX() < 0) {
 			head.setX(500);
 		}
-		if(head.getY() > 500) {
+		if(head.getY() > 490) {
 			head.setY(0);
 		}
 		if(head.getY() < 0) {
@@ -189,6 +193,7 @@ for(int i = 0; i < tail.size(); i++) {
 			foodEaten++;
 			dropFood();
 			drawFood();
+			tail.add(new Segment(head.getX(), head.getY()));
 		}
 
 	}
